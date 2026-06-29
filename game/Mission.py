@@ -64,7 +64,11 @@ def SkillCheck(chars: List[Character], attribute: Attribute, difficulty: int = 4
     logging.info(tries)
     for i in range(tries):
         throw = random.randint(1, 10)
-        if throw >= difficulty:
+        if throw == 1:
+            success -= 1
+        elif throw == 10:
+            success += 2
+        elif throw >= difficulty:
             success += 1
         msg = str(throw) + " | " + str(difficulty)
         logging.info(msg)
