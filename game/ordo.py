@@ -1,3 +1,5 @@
+# fair random
+
 import logging
 from enum import Enum
 from typing import List, Dict
