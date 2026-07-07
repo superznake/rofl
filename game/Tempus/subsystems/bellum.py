@@ -43,7 +43,8 @@ def fight(attackers: Party, defenders: Party, **mods):
                                 body = c
                                 take = skillcheck(attacker[Attribute.Pow], 7)
                                 if take < 0:
-                                    diff = 2
+                                    diff = 1
+                                    body = False
                                 elif take == 0:
                                     diff = 1
                     if skillcheck(attacker[Attribute.Pow], 6+diff) > 0:
