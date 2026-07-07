@@ -1,8 +1,8 @@
 import logging
-import random
 from typing import List
 
-from game.Character import Character, Attribute
+from game.Tempus.Classes.Character import Character, Attribute
+from game.Tempus.utils.skillcheck import skillcheck
 
 
 class Path:
@@ -26,7 +26,7 @@ class Mission:
         else:
             logging.warning("Wrong path data")
             return -1
-        result = SkillCheck(party, path.attribute, path.difficulty) - 1
+        result = skillcheck(party, path.attribute, path.difficulty) - 1
         if result < 0:
             logging.info("mission failed")
             return 0
@@ -54,22 +54,3 @@ class Mission:
                 return 2
             return 1
 
-
-def SkillCheck(chars: List[Character], attribute: Attribute, difficulty: int = 4):
-    logging.info(attribute)
-    success = 0
-    tries = 0
-    for char in chars:
-        tries += char[attribute]
-    logging.info(tries)
-    for i in range(tries):
-        throw = random.randint(1, 10)
-        if throw == 1:
-            success -= 1
-        elif throw == 10:
-            success += 2
-        elif throw >= difficulty:
-            success += 1
-        msg = str(throw) + " | " + str(difficulty)
-        logging.info(msg)
-    return success

@@ -1,8 +1,7 @@
 import logging
 
-from game.Character import Character, Attribute
-from game.Mission import SkillCheck, Path, Mission
-from game.ordo import generateRoster, Clan
+from game.Tempus.Classes.Character import Character
+from game.Tempus.subsystems.ordo import generateRoster, Clan
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)

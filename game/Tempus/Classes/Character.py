@@ -1,15 +1,11 @@
-from enum import Enum
+from game.Tempus.Classes.Attribute import Attribute
 from typing import Dict
-
-
-class Attribute(Enum):
-    Dex = 1
-    Pow = 2
-    Int = 3
+from game.Tempus.Classes.HeathState import HealthState
 
 
 class Character:
-    def __init__(self, skill=None, **attributes: int):
+    def __init__(self, hs: HealthState = HealthState.Full, **attributes: int):
+        self.hs = hs
         self.attributes: Dict[Attribute, int] = {}
 
         for attribute in Attribute:
@@ -20,5 +16,4 @@ class Character:
         return self.attributes.get(attribute, 0)
 
     def __getitem__(self, attribute: Attribute) -> int:
-        """Чтобы можно было писать char[Skill.Dex]"""
         return self.get_attribute(attribute)

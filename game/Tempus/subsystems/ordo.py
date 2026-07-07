@@ -4,7 +4,7 @@ import logging
 from enum import Enum
 from typing import List, Dict
 
-from game.Character import Character, Attribute
+from game.Tempus.Classes.Character import Character, Attribute
 
 
 class Clan(Enum):
