@@ -6,7 +6,8 @@ from game.Tempus.Classes.Attribute import Attribute
 
 def skillcheck(tries: int, difficulty: int = 4):
     success = 0
-    tries += 1
+    if tries == 0:
+        tries = 1
     logging.debug(tries)
     while tries > 0:
         throw = random.randint(1, 10)
@@ -19,6 +20,7 @@ def skillcheck(tries: int, difficulty: int = 4):
         msg = str(throw) + " | " + str(difficulty)
         logging.debug(msg)
         tries -= 1
+    logging.debug(f"Success: {success}")
     return success
 
 
